@@ -3,6 +3,8 @@ import pyperclip
 import csv
 import time
 
+shortcut = 'a+w' #If you want to change the shortcut just replace "c+w" for your pair of  favourite letters
+
 def check_is_in_file(save_content):
     with open('vocab.csv','r+') as vocab_csv:
         reader = csv.reader(vocab_csv, delimiter=';')
@@ -11,8 +13,9 @@ def check_is_in_file(save_content):
         
         for row in reader:
             if save_content in row[0]:
-                word_in_file = True              
-                print(word_in_file)
+                word_in_file = True
+                time.sleep(0.1)              
+                print('"'+save_content+'"', 'has not been added because it was already in the file.')
                 break
                 
             else: 
@@ -28,15 +31,18 @@ def add_word(save_content):
             time.sleep(0.1)
 
 
-shortcut = 'a+w' #If you want to change the shortcut just replace "c+w" for your pair of  favourite letters
-#try:
-save_content = str(pyperclip.paste()).title()
-if check_is_in_file(save_content) == False:
-    add_word(save_content)
+
+  
+while True:
+    try:
+        if keyboard.is_pressed(shortcut): # a + w come from "add word"
+            save_content = str(pyperclip.paste()).title()
+            if check_is_in_file(save_content) == False:
+                add_word(save_content)
 
             
-#except Exception as e:
-    print(e)
+    except Exception as e:
+        print(e)
 
 input()
 
