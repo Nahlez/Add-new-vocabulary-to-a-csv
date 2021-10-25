@@ -41,7 +41,9 @@ while True:
     try:
         if keyboard.is_pressed(shortcut): 
             save_content = str(pyperclip.paste()).title()
-            if check_is_in_file(save_content) == False:
+            print(len(save_content))
+            print(len(save_content) > 0)
+            if check_is_in_file(save_content) == False and len(save_content) != 0:
                 add_word(save_content)
 
             
