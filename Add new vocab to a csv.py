@@ -34,15 +34,13 @@ def check_is_in_file(save_content):
   
 print('Welcome to the add vocabulary script.')
 print('Steps:\n1)Copy the word that you don´t know. \n2) press the keys "'+shortcut+'" simultaneously. \nReady! this will add the word in a csv file')
-print('Dont worry about duplicates. The script can detect them.')
+print('Dont worry about duplicates. The script can detect them.\n')
 
 while True:
     keyboard.wait(shortcut)
     try:
         if keyboard.is_pressed(shortcut): 
             save_content = str(pyperclip.paste()).title()
-            print(len(save_content))
-            print(len(save_content) > 0)
             if check_is_in_file(save_content) == False and len(save_content) != 0:
                 add_word(save_content)
 
