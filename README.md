@@ -4,7 +4,7 @@ If you are learning a new language, when you are reading on your computer, you c
 
 **Requeriments:**
 
-- Python 3 or above.
+- Python 3.
 
 - The python modules: Pyautogui, keyboard.
 
